@@ -9458,7 +9458,7 @@
     },
     {
       "ret": "bool",
-      "name": "TextDraw_SetSetProportional",
+      "name": "TextDraw_SetProportional",
       "params": [
         {
           "name": "textdraw",

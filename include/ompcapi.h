@@ -732,7 +732,7 @@ typedef bool (*TextDraw_SetShadow_t)(void* textdraw, int size);
 typedef bool (*TextDraw_SetOutline_t)(void* textdraw, int size);
 typedef bool (*TextDraw_SetBackgroundColor_t)(void* textdraw, uint32_t color);
 typedef bool (*TextDraw_SetFont_t)(void* textdraw, int font);
-typedef bool (*TextDraw_SetSetProportional_t)(void* textdraw, bool set);
+typedef bool (*TextDraw_SetProportional_t)(void* textdraw, bool set);
 typedef bool (*TextDraw_SetSelectable_t)(void* textdraw, bool set);
 typedef bool (*TextDraw_ShowForPlayer_t)(void* player, void* textdraw);
 typedef bool (*TextDraw_HideForPlayer_t)(void* player, void* textdraw);
@@ -2551,7 +2551,7 @@ struct TextDraw_t {
     TextDraw_SetOutline_t SetOutline;
     TextDraw_SetBackgroundColor_t SetBackgroundColor;
     TextDraw_SetFont_t SetFont;
-    TextDraw_SetSetProportional_t SetSetProportional;
+    TextDraw_SetProportional_t SetProportional;
     TextDraw_SetSelectable_t SetSelectable;
     TextDraw_ShowForPlayer_t ShowForPlayer;
     TextDraw_HideForPlayer_t HideForPlayer;
@@ -3429,7 +3429,7 @@ static bool omp_initialize_capi(struct OMPAPI_t* ompapi) {
     ompapi->TextDraw.SetOutline = (TextDraw_SetOutline_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetOutline");
     ompapi->TextDraw.SetBackgroundColor = (TextDraw_SetBackgroundColor_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetBackgroundColor");
     ompapi->TextDraw.SetFont = (TextDraw_SetFont_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetFont");
-    ompapi->TextDraw.SetSetProportional = (TextDraw_SetSetProportional_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetSetProportional");
+    ompapi->TextDraw.SetProportional = (TextDraw_SetProportional_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetProportional");
     ompapi->TextDraw.SetSelectable = (TextDraw_SetSelectable_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_SetSelectable");
     ompapi->TextDraw.ShowForPlayer = (TextDraw_ShowForPlayer_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_ShowForPlayer");
     ompapi->TextDraw.HideForPlayer = (TextDraw_HideForPlayer_t)LIBRARY_GET_ADDR(capi_lib, "TextDraw_HideForPlayer");
