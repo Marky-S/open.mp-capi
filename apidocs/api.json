@@ -8249,6 +8249,10 @@
         {
           "name": "rotationZ",
           "type": "float"
+        },
+        {
+          "name": "syncRotation",
+          "type": "bool"
         }
       ]
     },
