@@ -101,7 +101,7 @@ Add this repository as a subdirectory:
 
 ```cmake
 add_subdirectory(open.mp-capi)
-target_link_libraries(your_component PRIVATE ompcapi)
+target_link_libraries(your_component PRIVATE OMP-CAPI)
 ```
 
 ## API Documentation
