@@ -115,13 +115,16 @@ The complete API documentation is available in the `apidocs/` directory:
 ```
 open.mp-capi/
 ├── include/
-│   └── ompcapi.h       # Main header file with complete API
+│   └── ompcapi.h                 # Main header file with complete API
 ├── apidocs/
-│   ├── api.json        # API function specifications
-│   └── events.json     # Event system specifications
-├── CMakeLists.txt      # CMake configuration
-├── LICENSE.md          # Mozilla Public License 2.0
-└── README.md           # This file
+│   ├── api.json                  # API function specifications
+│   └── events.json               # Event system specifications
+├── tools/
+│   ├── generate_docs.js          # Generate the api.json file
+│   └── generate_single_header.js # Generate the ompcapi.h if you cloned the main open.mp repository
+├── CMakeLists.txt                # CMake configuration
+├── LICENSE.md                    # Mozilla Public License 2.0
+└── README.md                     # This file
 ```
 
 ## License
