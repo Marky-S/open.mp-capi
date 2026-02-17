@@ -44,7 +44,7 @@ This library provides a complete C API for open.mp server functionality, allowin
 2. Initialize the API by creating an `OMPAPI_t` instance and calling `omp_initialize_capi`:
 
 ```c
-#include "ompcapi.h"
+#include <ompcapi.h>
 #include <stdio.h>
 
 struct OMPAPI_t api;
