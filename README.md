@@ -41,7 +41,9 @@ This library provides a complete C API for open.mp server functionality, allowin
 #include "ompcapi.h"
 ```
 
-2. Initialize the API by creating an `OMPAPI_t` instance and calling `omp_initialize_capi`:
+2. Initialize the API by creating an `OMPAPI_t` instance and calling `omp_initialize_capi`:  
+
+**Note:** This example shows how you can create a component with open.mp C-API too. It's not a must, as long as your library is somehow loaded, calling `omp_initialize_capi` alone works fine.  
 
 ```c
 #include <ompcapi.h>
@@ -49,7 +51,7 @@ This library provides a complete C API for open.mp server functionality, allowin
 
 struct OMPAPI_t api;
 
-void on_ready_callback() {
+void onReadyCallback() {
     api.Core.Log("Example - Ready callback");
 
     // Now you can use the API
@@ -65,11 +67,11 @@ void on_ready_callback() {
     api.Core.Log(actor_msg);
 }
 
-void on_reset_callback() {
+void onResetCallback() {
     api.Core.Log("Example - Reset callback");
 }
 
-void on_free_callback() {
+void onFreeCallback() {
     api.Core.Log("Example - Free callback");
 }
 
@@ -83,9 +85,10 @@ void ComponentEntryPoint() {
 
     // Link the IComponent basic informations
     // UID, Component Name, Version, Callbacks
-    api.Component.Create(0x17C581AEC8711DD9, "Example", (struct ComponentVersion){
+    // To generate a new UID you can use https://open.mp/uid
+    return api.Component.Create(0x17C581AEC8711DD9, "Example", (struct ComponentVersion){
         1, 0, 0, 0
-    }, on_ready_callback, on_reset_callback, on_free_callback);
+    }, onReadyCallback, onResetCallback, onFreeCallback);
 }
 ```
 
