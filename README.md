@@ -44,26 +44,48 @@ This library provides a complete C API for open.mp server functionality, allowin
 2. Initialize the API by creating an `OMPAPI_t` instance and calling `omp_initialize_capi`:
 
 ```c
-#include "ompcapi.h"
+#include <ompcapi.h>
+#include <stdio.h>
 
 struct OMPAPI_t api;
 
-int main() 
-{
-    // Initialize the API - this loads the $CAPI library and all functions
-    if (!omp_initialize_capi(&api))
-    {
-        // Initialization failed - library not found or functions couldn't be loaded
-        printf("Failed to initialize open.mp C API\n");
-        return 1;
-    }
+void on_ready_callback() {
+    api.Core.Log("Example - Ready callback");
 
     // Now you can use the API
     // Example: Create an actor
     int actor_id;
     void* actor = api.Actor.Create(123, 0.0f, 0.0f, 3.0f, 0.0f, &actor_id);
 
-    return 0;
+    // The CAPI doesn't support passing vargs, so you need to format it
+    // before calling the Log function from the API
+    char actor_msg[512];
+
+    sprintf(actor_msg, "Created actor with ID: %i (at address 0x%x)",  actor_id, actor);
+    api.Core.Log(actor_msg);
+}
+
+void on_reset_callback() {
+    api.Core.Log("Example - Reset callback");
+}
+
+void on_free_callback() {
+    api.Core.Log("Example - Free callback");
+}
+
+void ComponentEntryPoint() {
+    if (!omp_initialize_capi(&api))
+    {
+        // Initialization failed - library not found or functions couldn't be loaded
+        printf("Failed to initialize open.mp C API\n");
+        return;
+    }
+
+    // Link the IComponent basic informations
+    // UID, Component Name, Version, Callbacks
+    api.Component.Create(0x17C581AEC8711DD9, "Example", (struct ComponentVersion){
+        1, 0, 0, 0
+    }, on_ready_callback, on_reset_callback, on_free_callback);
 }
 ```
 
@@ -79,7 +101,7 @@ Add this repository as a subdirectory:
 
 ```cmake
 add_subdirectory(open.mp-capi)
-target_link_libraries(your_component PRIVATE ompcapi)
+target_link_libraries(your_component PRIVATE OMP-CAPI)
 ```
 
 ## API Documentation
@@ -93,13 +115,16 @@ The complete API documentation is available in the `apidocs/` directory:
 ```
 open.mp-capi/
 ├── include/
-│   └── ompcapi.h       # Main header file with complete API
+│   └── ompcapi.h                 # Main header file with complete API
 ├── apidocs/
-│   ├── api.json        # API function specifications
-│   └── events.json     # Event system specifications
-├── CMakeLists.txt      # CMake configuration
-├── LICENSE.md          # Mozilla Public License 2.0
-└── README.md           # This file
+│   ├── api.json                  # API function specifications
+│   └── events.json               # Event system specifications
+├── tools/
+│   ├── generate_docs.js          # Generate the api.json file
+│   └── generate_single_header.js # Generate the ompcapi.h if you cloned the main open.mp repository
+├── CMakeLists.txt                # CMake configuration
+├── LICENSE.md                    # Mozilla Public License 2.0
+└── README.md                     # This file
 ```
 
 ## License
