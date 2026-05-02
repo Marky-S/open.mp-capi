@@ -655,7 +655,7 @@ typedef void* (*PlayerObject_FromID_t)(void* player, int objectid);
 typedef int (*PlayerObject_GetID_t)(void* player, void* object);
 typedef bool (*PlayerObject_AttachToVehicle_t)(void* player, void* object, void* vehicle, float offsetX, float offsetY, float offsetZ, float rotationX, float rotationY, float rotationZ);
 typedef bool (*PlayerObject_AttachToPlayer_t)(void* player, void* object, void* playerAttachedTo, float offsetX, float offsetY, float offsetZ, float rotationX, float rotationY, float rotationZ);
-typedef bool (*PlayerObject_AttachToObject_t)(void* player, void* object, void* attachedTo, float offsetX, float offsetY, float offsetZ, float rotationX, float rotationY, float rotationZ, bool syncRotation);
+typedef bool (*PlayerObject_AttachToObject_t)(void* player, void* object, void* attachedTo, float offsetX, float offsetY, float offsetZ, float rotationX, float rotationY, float rotationZ);
 typedef bool (*PlayerObject_SetPos_t)(void* player, void* object, float x, float y, float z);
 typedef bool (*PlayerObject_GetPos_t)(void* player, void* object, float* x, float* y, float* z);
 typedef bool (*PlayerObject_SetRot_t)(void* player, void* object, float rotationX, float rotationY, float rotationZ);
