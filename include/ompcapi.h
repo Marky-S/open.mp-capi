@@ -1227,6 +1227,20 @@ struct EventArgs_onNPCPlaybackEnd {
 };
 typedef bool (*EventCallback_onNPCPlaybackEnd)(struct EventArgs_onNPCPlaybackEnd args);
 
+struct EventArgs_onPlayerWeaponShot {
+    int size;
+    struct {
+        void** player;
+        int* weapon;
+        int* hitType;
+        int* hitId;
+        float* x;
+        float* y;
+        float* z;
+    } *list;
+};
+typedef bool (*EventCallback_onPlayerWeaponShot)(struct EventArgs_onPlayerWeaponShot args);
+
 struct EventArgs_onNPCShotMissed {
     int size;
     struct {
