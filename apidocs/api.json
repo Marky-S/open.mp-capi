@@ -11743,6 +11743,42 @@
     },
     {
       "ret": "bool",
+      "name": "Vehicle_SetMaterialTuning",
+      "params": [
+        {
+          "name": "vehicle",
+          "type": "void*"
+        },
+        {
+          "name": "materialName",
+          "type": "const char*"
+        },
+        {
+          "name": "color",
+          "type": "uint32_t"
+        },
+        {
+          "name": "textureName",
+          "type": "const char*"
+        }
+      ]
+    },
+    {
+      "ret": "bool",
+      "name": "Vehicle_ResetMaterialTuning",
+      "params": [
+        {
+          "name": "vehicle",
+          "type": "void*"
+        },
+        {
+          "name": "materialName",
+          "type": "const char*"
+        }
+      ]
+    },
+    {
+      "ret": "bool",
       "name": "Vehicle_SetHealth",
       "params": [
         {

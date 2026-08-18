@@ -878,6 +878,8 @@ typedef bool (*Vehicle_AddComponent_t)(void* vehicle, int componentid);
 typedef bool (*Vehicle_RemoveComponent_t)(void* vehicle, int componentid);
 typedef bool (*Vehicle_ChangeColor_t)(void* vehicle, int color1, int color2);
 typedef bool (*Vehicle_ChangePaintjob_t)(void* vehicle, int paintjobid);
+typedef bool (*Vehicle_SetMaterialTuning_t)(void* vehicle, const char* materialName, uint32_t color, const char* textureName);
+typedef bool (*Vehicle_ResetMaterialTuning_t)(void* vehicle, const char* materialName);
 typedef bool (*Vehicle_SetHealth_t)(void* vehicle, float health);
 typedef float (*Vehicle_GetHealth_t)(void* vehicle);
 typedef bool (*Vehicle_AttachTrailer_t)(void* trailer, void* vehicle);
@@ -2718,6 +2720,8 @@ struct Vehicle_t {
     Vehicle_RemoveComponent_t RemoveComponent;
     Vehicle_ChangeColor_t ChangeColor;
     Vehicle_ChangePaintjob_t ChangePaintjob;
+    Vehicle_SetMaterialTuning_t SetMaterialTuning;
+    Vehicle_ResetMaterialTuning_t ResetMaterialTuning;
     Vehicle_SetHealth_t SetHealth;
     Vehicle_GetHealth_t GetHealth;
     Vehicle_AttachTrailer_t AttachTrailer;
@@ -3591,6 +3595,8 @@ static bool omp_initialize_capi(struct OMPAPI_t* ompapi) {
     ompapi->Vehicle.RemoveComponent = (Vehicle_RemoveComponent_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_RemoveComponent");
     ompapi->Vehicle.ChangeColor = (Vehicle_ChangeColor_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_ChangeColor");
     ompapi->Vehicle.ChangePaintjob = (Vehicle_ChangePaintjob_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_ChangePaintjob");
+    ompapi->Vehicle.SetMaterialTuning = (Vehicle_SetMaterialTuning_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_SetMaterialTuning");
+    ompapi->Vehicle.ResetMaterialTuning = (Vehicle_ResetMaterialTuning_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_ResetMaterialTuning");
     ompapi->Vehicle.SetHealth = (Vehicle_SetHealth_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_SetHealth");
     ompapi->Vehicle.GetHealth = (Vehicle_GetHealth_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_GetHealth");
     ompapi->Vehicle.AttachTrailer = (Vehicle_AttachTrailer_t)LIBRARY_GET_ADDR(capi_lib, "Vehicle_AttachTrailer");
