@@ -225,7 +225,6 @@ typedef bool (*Player_SetWorldBounds_t)(void* player, float xMax, float xMin, fl
 typedef bool (*Player_ClearWorldBounds_t)(void* player);
 typedef bool (*Player_GetWorldBounds_t)(void* player, float* xmax, float* xmin, float* ymax, float* ymin);
 typedef bool (*Player_ClearAnimations_t)(void* player, int syncType);
-typedef bool (*Player_ClearAnimationsImmediately_t)(void* player, int syncType);
 typedef bool (*Player_GetLastShotVectors_t)(void* player, float* origin_x, float* origin_y, float* origin_z, float* hit_x, float* hit_y, float* hit_z);
 typedef void* (*Player_GetCameraTargetPlayer_t)(void* player);
 typedef void* (*Player_GetCameraTargetActor_t)(void* player);
@@ -2048,7 +2047,6 @@ struct Player_t {
     Player_ClearWorldBounds_t ClearWorldBounds;
     Player_GetWorldBounds_t GetWorldBounds;
     Player_ClearAnimations_t ClearAnimations;
-    Player_ClearAnimationsImmediately_t ClearAnimationsImmediately;
     Player_GetLastShotVectors_t GetLastShotVectors;
     Player_GetCameraTargetPlayer_t GetCameraTargetPlayer;
     Player_GetCameraTargetActor_t GetCameraTargetActor;
@@ -2961,7 +2959,6 @@ static bool omp_initialize_capi(struct OMPAPI_t* ompapi) {
     ompapi->Player.ClearWorldBounds = (Player_ClearWorldBounds_t)LIBRARY_GET_ADDR(capi_lib, "Player_ClearWorldBounds");
     ompapi->Player.GetWorldBounds = (Player_GetWorldBounds_t)LIBRARY_GET_ADDR(capi_lib, "Player_GetWorldBounds");
     ompapi->Player.ClearAnimations = (Player_ClearAnimations_t)LIBRARY_GET_ADDR(capi_lib, "Player_ClearAnimations");
-    ompapi->Player.ClearAnimationsImmediately = (Player_ClearAnimationsImmediately_t)LIBRARY_GET_ADDR(capi_lib, "Player_ClearAnimationsImmediately");
     ompapi->Player.GetLastShotVectors = (Player_GetLastShotVectors_t)LIBRARY_GET_ADDR(capi_lib, "Player_GetLastShotVectors");
     ompapi->Player.GetCameraTargetPlayer = (Player_GetCameraTargetPlayer_t)LIBRARY_GET_ADDR(capi_lib, "Player_GetCameraTargetPlayer");
     ompapi->Player.GetCameraTargetActor = (Player_GetCameraTargetActor_t)LIBRARY_GET_ADDR(capi_lib, "Player_GetCameraTargetActor");

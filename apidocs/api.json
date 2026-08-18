@@ -2075,20 +2075,6 @@
     },
     {
       "ret": "bool",
-      "name": "Player_ClearAnimationsImmediately",
-      "params": [
-        {
-          "name": "player",
-          "type": "void*"
-        },
-        {
-          "name": "syncType",
-          "type": "int"
-        }
-      ]
-    },
-    {
-      "ret": "bool",
       "name": "Player_GetLastShotVectors",
       "params": [
         {
